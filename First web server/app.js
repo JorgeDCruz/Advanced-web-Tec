@@ -4,9 +4,15 @@ const app = express();
 const port = 3600;
 
 app.get("/", (req, res) => {
-    res.send("Hello world");
+    res.send("Hola mundo!");
 });
 
-app.listen(port, () =>{
-    console.log(`Server listening on port ${port}`);
+app.listen(port, (error) =>{
+    if(!error){
+        console.log(`Server listening on port ${port}`);
+    }
+    else{
+        console.log(`Error starting server ${error}`);
+    }
+
 });
