@@ -13,6 +13,8 @@ const { database } = require('./keys')
 // Initializations
 const app = express();
 require('./lib/passport')
+//Añadimos la configuracion de dotenv
+require('dotenv').config()
 moment.locale('es'); 
 
 // Settings
@@ -66,4 +68,5 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Starting the server
 app.listen(app.get('port'), () => {
     console.log("Server on port: ", app.get('port'))
+    //console.log(process.env)
 })
