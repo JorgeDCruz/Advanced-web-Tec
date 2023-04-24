@@ -1,0 +1,33 @@
+<body class="img-fluid"  style="background-image: url('https://filmdaily.co/wp-content/uploads/2018/06/rick-and-morty-screaming-sun-1024x475.jpg'); background-repeat: no-repeat; background-attachment: fixed; background-size: cover;">
+    <div class="container p-4 fw-bold">
+        <div class="row">
+            <div class="col-md-4 mx-auto">
+                <div class="card text-center my-3">
+                    <div class="card-body">
+                        <h3>Localidades</b></h3>
+                    </div>
+                </div>  
+            </div>
+        </div>
+
+        <div class="row">
+            {{#if error}}
+                <p>Error: {{error}}</p>
+            {{/if}}
+            {{#each data}}
+                <div class="col-md-3">
+                    <div class="card" style="margin: 10px;">
+                        <h5 class="card-header">{{name}}</h5>
+                        <div class="card-body">
+                            <h5 class="card-tittle text-muted">Type: {{type}}</h5>
+                            <p class="card-text">Dimension: {{dimension}}</p>
+                            <a href={{url}} class="btn btn-success">Visitar</a>
+                        </div>
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+
+        </div>
+    </div>
+</body>
