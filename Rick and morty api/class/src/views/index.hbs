@@ -1,33 +1,35 @@
-<div class="container p-4">
-    <div class="row">
-        <div class="col-md-4 mx-auto">
-            <div class="card text-center my-3">
-                <div class="card-body">
-                    <h3>Hola</b></h3>
-                </div>
-            </div>  
-        </div>
-      </div>
-
-      <div class="row">
-        {{#if error}}
-            <p>Error: {{error}}</p>
-        {{/if}}
-
-        {{#each data}}
-            <div class="col-md-3">
-                <div class="card" style="margin: 10px;">
-                    <img class="card-img-top" src={{image}}>
+<body class="img-fluid"  style="background-image: url('https://www.gamespot.com/a/uploads/screen_kubrick/171/1712892/3614168-total_rickall.jpg'); background-repeat: no-repeat; background-attachment: fixed; background-size: cover;">
+    <div class="container p-4">
+        <div class="row">
+            <div class="col-md-4 mx-auto">
+                <div class="card text-center my-3">
                     <div class="card-body">
-                        <h5 class="card-title">{{name}}</h5>
-                        <p class="card-text">{{type}}</p>
-                        <a href={{url}} class="btn btn-primary">Go</a>
+                        <h3>Personajes</b></h3>
+                    </div>
+                </div>  
+            </div>
+        </div>
+
+        <div class="row">
+            {{#if error}}
+                <p>Error: {{error}}</p>
+            {{/if}} 
+
+            {{#each data}}
+                <div class="col-md-3">
+                    <div class="card" style="margin: 10px;">
+                        <img class="card-img-top" src={{image}}>
+                        <div class="card-body">
+                            <h5 class="card-title">{{name}}</h5>
+                            <p class="card-text">{{type}}</p>
+                            <a href={{url}} class="btn btn-primary">Ver</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        {{/each}}
+            {{/each}}
 
-      </div>
+        </div>
 
+        </div>
     </div>
-</div>
+</body>
