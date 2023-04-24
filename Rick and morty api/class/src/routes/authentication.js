@@ -39,21 +39,6 @@ router.post('/signup', isNotLoggedIn, async (req, res) => {
         req.flash('message', 'Ya existe el usuario');
         res.redirect('/signup');
     }
-
-    
-
-    // const { newPassword, repeatPassword } = req.body;
-    // if (newPassword !== repeatPassword) {
-    //     req.flash('message', 'Las contraseñas no coinciden');
-    //     res.redirect('/profile')
-    // } else {
-    //     const newUser = {
-    //         password: await encryptPassword(newPassword)
-    //     }
-    //     await pool.query('UPDATE User set ? WHERE id = ?', [newUser, req.user.id])
-    //     req.flash('success', 'Contraseña actualizada correctamente');
-    //     res.redirect('/profile')
-    // }
 })
 
 router.get('/profile', isLoggedIn, (req, res) => {
