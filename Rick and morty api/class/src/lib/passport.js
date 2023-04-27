@@ -1,3 +1,4 @@
+
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy
 
@@ -10,10 +11,13 @@ passport.use('local.signin', new LocalStrategy({
     passReqToCallback: true
 }, async (req, username, password, done) => {
     const rows = await pool.query("SELECT * FROM User WHERE BINARY username = ?", [username])
+    console.log(rows)
     if (rows.length > 0) {
         const user = rows[0];
         const validPassword = await matchPassword(password, user.password)
+        console.log(validPassword)
         if (validPassword) {
+            console.log("Inicio sesion")
             done(null, user, req.flash('success', 'Bienvenido ' + user.username));
         } else {
             done(null, false, req.flash('message','Contraseña Incorrecta'));
