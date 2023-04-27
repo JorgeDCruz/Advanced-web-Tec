@@ -4,6 +4,7 @@ RUN mkdir /app
 WORKDIR /app
 COPY **/package.json **/package-lock.json ./
 RUN npm install
+RUN apk update && apk add bash
 COPY . /app
 CMD ["npm", "start"]
 
