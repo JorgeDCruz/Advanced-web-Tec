@@ -31,8 +31,9 @@ router.post('/signup', isNotLoggedIn, async (req, res) => {
     console.log(rows);
     if(rows.length == 0){
         const encPassword = await encryptPassword(password);
-        await pool.query("Insert INTO user (id, username, password) values(" + 1 + ", \"" + username + "\", " + "\"" + encPassword + "\")")
-        
+        //Insertamos los datos que nos dio el usuario
+        await pool.query("Insert INTO user (username, password) values(\"" + username + "\", " + "\"" + encPassword + "\")")
+
         req.flash('message', 'Usuario creado con exito');
         res.redirect('/signin')
     }else{
