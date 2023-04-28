@@ -1,3 +1,4 @@
+create database IF NOT EXISTS itesm502;
 -- phpMyAdmin SQL Dump
 -- version 4.9.1
 -- https://www.phpmyadmin.net/
@@ -28,6 +29,7 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `sessions`
 --
 
+use itesm502;
 CREATE TABLE `sessions` (
   `session_id` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `expires` int(11) UNSIGNED NOT NULL,
@@ -48,9 +50,10 @@ INSERT INTO `sessions` (`session_id`, `expires`, `data`) VALUES
 --
 
 CREATE TABLE `user` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(16) COLLATE utf8mb4_general_ci NOT NULL,
-  `password` varchar(60) COLLATE utf8mb4_general_ci NOT NULL
+  `password` varchar(60) COLLATE utf8mb4_general_ci NOT NULL,
+   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -60,35 +63,9 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id`, `username`, `password`) VALUES
 (1, 'ivan', '$2a$10$W4NlOWOb0OBJhMAox9J.PuxdBFdg9uzdM4JPI0TcRGAfrMRYDCGlS');
 
---
--- Índices para tablas volcadas
---
-
---
--- Indices de la tabla `sessions`
---
--- ALTER TABLE `sessions`
---   ADD PRIMARY KEY (`session_id`);
+ALTER TABLE `sessions`
+  ADD PRIMARY KEY (`session_id`);
 
 --
 -- Indices de la tabla `user`
 --
--- ALTER TABLE `user`
---   ADD PRIMARY KEY (`id`),
---   ADD UNIQUE KEY `username` (`username`),
---   ADD UNIQUE KEY `password` (`password`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `user`
---
--- ALTER TABLE `user`
---   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
--- COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
