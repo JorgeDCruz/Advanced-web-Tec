@@ -10,7 +10,7 @@ passport.use('local.signin', new LocalStrategy({
     passwordField: 'password',
     passReqToCallback: true
 }, async (req, username, password, done) => {
-    const rows = await pool.query("SELECT * FROM User WHERE BINARY username = ?", [username])
+    const rows = await pool.query("SELECT * FROM user WHERE BINARY username = ?", [username])
     console.log(rows)
     if (rows.length > 0) {
         const user = rows[0];
@@ -18,9 +18,9 @@ passport.use('local.signin', new LocalStrategy({
         console.log(validPassword)
         if (validPassword) {
             console.log("Inicio sesion")
-            done(null, user, req.flash('success', 'Bienvenido ' + user.username));
+            return done(null, user, req.flash('success', 'Bienvenido ' + user.username));
         } else {
-            done(null, false, req.flash('message','Contraseña Incorrecta'));
+            return done(null, false, req.flash('message','Contraseña Incorrecta'));
         }
     } else {
         return done(null, false, req.flash('message','Usuario no encontrado'));

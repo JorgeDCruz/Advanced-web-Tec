@@ -1,13 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
-const { isLoggedIn, isNotLoggedIn } = require('../lib/auth');
 const { encryptPassword, matchPassword } = require('../lib/helpers')
+const { isLoggedIn, isNotLoggedIn } = require('../lib/auth');
 
 const pool = require('../database');
 
 router.get('/signin', isNotLoggedIn, (req, res) => {
-    res.render('auth/signin')
+    res.render('auth/signin', {messages: req.flash("Hola")})
 })
 
 //Pedimos que se renderise la pantalla de signup 
@@ -19,7 +19,7 @@ router.post('/signin', isNotLoggedIn, (req, res, next) => {
     passport.authenticate('local.signin', {
         successRedirect: '/profile',
         failureRedirect: '/signin',
-        failureFlash: true
+        failureFlash: true  
     })(req, res, next)
 })
 
@@ -27,8 +27,7 @@ router.post('/signup', isNotLoggedIn, async (req, res) => {
     //Obtenemos ambos campos
     const {username, password} = req.body;
 
-    const rows = await pool.query("SELECT * FROM USER WHERE username = \"" + username + "\"");
-    console.log(rows);
+    const rows = await pool.query("SELECT * FROM user WHERE username = \"" + username + "\"");
     if(rows.length == 0){
         const encPassword = await encryptPassword(password);
         //Insertamos los datos que nos dio el usuario
@@ -42,6 +41,7 @@ router.post('/signup', isNotLoggedIn, async (req, res) => {
     }
 })
 
+//El middleware esta fallando por alguna razón
 router.get('/profile', isLoggedIn, (req, res) => {
     res.render('profile');
 })
