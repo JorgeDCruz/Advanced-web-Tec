@@ -3,6 +3,11 @@
 ### Primera parte de la actividad:
 - Implementar DotEnv para las credenciales de la base de datos **(Si lo hicimos pero no lo incluímos en el repo por seguridad)**
 - Crear rutas y vistas para **Locations** y para **Episodes**
+- Implementar un **SignUp**
+
+### Segunda parte de la actividad:
+- Construir las imágenes del servidor web y de la base de datos en Docker, así como su contenedor
+- Hacer que la página web corrá a través del comando ``` docker-compose up ```
 
 ## Consideraciones
 ## Base de datos
