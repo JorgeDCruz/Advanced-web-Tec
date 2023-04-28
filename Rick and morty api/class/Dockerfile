@@ -5,7 +5,7 @@ WORKDIR /app
 COPY . .
 RUN npm install
 # Si queremos utilizar bash en la consola de docker hay que descomentar el comando:
-#RUN apk update && apk add bash
+RUN apk update && apk add bash
 COPY . /app
 
 EXPOSE 4000

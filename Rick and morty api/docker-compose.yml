@@ -1,19 +1,22 @@
 version: "3.8"
 services:
   database:
+    image: mysql:8.0.33
+    command: --authentication_policy=mysql_native_password
     build: ./database
     environment:
       MYSQL_ROOT_PASSWORD: Madrilenio3141616_]
       MYSQL_DATABASE: itesm502
     restart: always
-  web-nodejs:
+  class:
     build: ./class
     environment:
-      DB_HOST: host.docker.internal
+      #DB_HOST: host.docker.internal
+      DB_HOST: database
       DB_USER: root
       DB_PASSWORD: Madrilenio3141616_]
       DB_DATABASE: itesm502
-    # command: bash -c 'while !</dev/tcp/db/3306; do sleep 1; done; npm start'
+    #command: bash -c 'while !</dev/tcp/db/3306; do sleep 1; done; npm start'
     ports:
       - "4000:4000"
     depends_on:
