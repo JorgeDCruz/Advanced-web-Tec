@@ -2,6 +2,8 @@ import NextAuth, {NextAuthOptions} from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { signOut } from "next-auth/react";
 import excuteQuery from "../../database/db"
+import {helpers} from "../../lib/helpers"
+
 
 const authOptions: NextAuthOptions = {
     session:{
@@ -23,13 +25,16 @@ const authOptions: NextAuthOptions = {
                 const {email, password} = credentials as {email: string; password: string};
                 //Realizamos la lógica del login, aquí va la consulta y comprobación de la DB
 
-                const rows = await excuteQuery({
-                    query: 'insert into user (userID, email, password) values(?, ?, ?)',
-                    values: ['1234', email, password]
-                })
-                console.log(rows);
-                if(email !== "A01634536@tec.mx" && password !== "1234"){
-                    return null;
+                // const rows = await excuteQuery({
+                //     query: 'insert into user (userID, email, password) values(?, ?, ?)',
+                //     values: ['1234', email, password]
+                // })
+                //console.log(rows);
+                const encPassword = await helpers.encryptPassword(password);
+                console.log(encPassword);
+                if(email !== "A01634536@tec.mx" || password !== "1234"){
+                    throw new Error('invalid credentials');
+                    //return null;
                 }
                 return {id: "1234", name: "jorge Cruz", email: "A01634536@tec.mx", redirect: "/"};
             }
@@ -48,6 +53,9 @@ const authOptions: NextAuthOptions = {
         },
     },
     secret: "test",
+    pages: {
+        signIn: "/auth/signin"
+    }
 }
 
 export default NextAuth(authOptions);
