@@ -3,13 +3,15 @@ import { NextPage } from "next";
 import { signIn } from "next-auth/react";
 import { FormEventHandler, useState } from "react";
 import { useRouter } from 'next/router';
-import excuteQuery from "../database/db"
-
 interface Props {}
+
+
+
 
 const SignUp: NextPage = (props): JSX.Element => {
     const router = useRouter();
-    
+
+
     return (
         <div className="sign-in-form">
             <form>
@@ -17,8 +19,9 @@ const SignUp: NextPage = (props): JSX.Element => {
                 <input type="email" placeholder="email@gmail.com"></input>
                 <input type="password" placeholder="********"></input>
                 <input type="submit" value="login"></input>
-                <button onClick={() => {router.push("/")}}>Cancel</button>
+                
             </form>
+            <button onClick={() => {router.push("/auth/signin")}}>Sign Up</button>
         </div>
     );
 };

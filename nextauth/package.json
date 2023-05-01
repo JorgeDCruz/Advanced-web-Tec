@@ -15,6 +15,8 @@
     "autoprefixer": "10.4.14",
     "bcryptjs": "^2.4.3",
     "dotenv": "^16.0.3",
+    "fs": "^0.0.1-security",
+    "net": "^1.0.2",
     "next": "13.3.2",
     "next-auth": "^4.22.1",
     "postcss": "8.4.23",
@@ -23,5 +25,12 @@
     "serverless-mysql": "^1.5.5",
     "tailwindcss": "3.3.2",
     "typescript": "5.0.4"
+  },
+  "browser": {
+    "tls": false,
+    "net": false,
+    "fs": false,
+    "path": false,
+    "os": false
   }
 }

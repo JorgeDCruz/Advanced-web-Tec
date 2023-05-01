@@ -1,6 +1,6 @@
 //const bcrypt = require('bcryptjs')
 import bcrypt from 'bcryptjs'
-export const helpers = {};
+const helpers = {};
 
 helpers.encryptPassword = async (password) => {
     const salt = await bcrypt.genSalt(10); // hash
@@ -21,5 +21,5 @@ helpers.generateRandomNumberCode =  (length) => {
     return Math.floor(Math.random()*9 * size_digits) + 1 * size_digits;
 };
 
-exports.helpers = helpers;
+export default helpers;
 //module.exports = {helpers};
