@@ -3,9 +3,10 @@ import { NextPage } from "next";
 import { signIn } from "next-auth/react";
 import { FormEventHandler, useState } from "react";
 import { useRouter } from 'next/router';
-import excuteQuery from "../database/db"
-
 interface Props {}
+
+
+
 
 const SignIn: NextPage = (props): JSX.Element => {
     const router = useRouter();
@@ -13,17 +14,17 @@ const SignIn: NextPage = (props): JSX.Element => {
     const [userInfo, setUserInfo] = useState({ email: "", password: "" });
 
     const handleSubmit: FormEventHandler<HTMLFormElement> = async (e) => {
-      // validate your userinfo
-      e.preventDefault();
-  
-      const res = await signIn("credential-login", {
-        email: userInfo.email,
-        password: userInfo.password,
-        //redirect: false,
-        callbackUrl: `${window.location.origin}/` 
-      });
-  
-      console.log(res);
+        // validate your userinfo
+        e.preventDefault();
+        
+        const res = await signIn("credential-login", {
+            email: userInfo.email,
+            password: userInfo.password,
+            //redirect: false,
+            callbackUrl: `${window.location.origin}/` 
+        });
+    
+        console.log(res);
     };
 
     return (
@@ -33,8 +34,9 @@ const SignIn: NextPage = (props): JSX.Element => {
                 <input value={userInfo.email} onChange={({ target }) => setUserInfo({ ...userInfo, email: target.value })} type="email" placeholder="email@gmail.com"></input>
                 <input value={userInfo.password} onChange={({ target }) => setUserInfo({ ...userInfo, password: target.value })} type="password" placeholder="********"></input>
                 <input type="submit" value="login"></input>
-                <button onClick={() => {router.push("/")}}>Cancel</button>
+                
             </form>
+            <button onClick={() => {router.push("/auth/signup")}}>Sign Up</button>
         </div>
     );
 };
