@@ -1,0 +1,30 @@
+<html>
+<head>
+    <title>app.engine() Demo</title>
+</head>
+ 
+<body>
+    <!-- Recibimos la variable name -->
+    <h1> Resultados  <%= name %></h1>
+
+    <div>
+        <form action="/" method="post">
+            <input type="text" name="username"/>
+            <button type="submit"> OK </button>
+        </form>
+    </div>
+    <div>
+        <p>
+            <%= message %>
+        </p>
+        <p>
+            <%= result %>
+        </p>
+    </div>
+    <div> 
+        <a href="/">
+            <button>Regresar</button>
+        </a>
+    </div>
+</body>
+</html>
