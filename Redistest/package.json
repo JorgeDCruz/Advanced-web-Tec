@@ -4,9 +4,10 @@
     "ejs": "^3.1.9",
     "express": "^4.18.2",
     "mysql2": "^3.3.3",
+    "path": "^0.12.7",
     "util": "^0.12.5"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "node redisApp/src/index.js"
   }
 }
