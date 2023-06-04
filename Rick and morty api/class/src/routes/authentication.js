@@ -16,6 +16,7 @@ router.get('/signup', isNotLoggedIn, (req, res) => {
 })
 
 router.post('/signin', isNotLoggedIn, (req, res, next) => {
+    console.log("REQ: ", req.body);
     passport.authenticate('local.signin', {
         successRedirect: '/profile',
         failureRedirect: '/signin',
@@ -50,6 +51,11 @@ router.get('/logout', isLoggedIn, (req, res) => {
     req.logOut();
     res.redirect('/signin');
 })
+
+router.get('/', (req, res) => {
+    res.redirect('/signin');
+})
+
 
 router.post('/change-password', isLoggedIn, async (req, res) => {
     const { newPassword, repeatPassword } = req.body;

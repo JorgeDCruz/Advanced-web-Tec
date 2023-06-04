@@ -11,13 +11,10 @@ passport.use('local.signin', new LocalStrategy({
     passReqToCallback: true
 }, async (req, username, password, done) => {
     const rows = await pool.query("SELECT * FROM user WHERE BINARY username = ?", [username])
-    console.log(rows)
     if (rows.length > 0) {
         const user = rows[0];
         const validPassword = await matchPassword(password, user.password)
-        console.log(validPassword)
         if (validPassword) {
-            console.log("Inicio sesion")
             return done(null, user, req.flash('success', 'Bienvenido ' + user.username));
         } else {
             return done(null, false, req.flash('message','Contraseña Incorrecta'));
