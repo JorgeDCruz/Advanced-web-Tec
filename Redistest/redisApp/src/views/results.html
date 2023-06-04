@@ -2,23 +2,23 @@
 <head>
     <title>app.engine() Demo</title>
 </head>
- 
 <body>
     <!-- Recibimos la variable name -->
-    <h1> Resultados  <%= name %></h1>
+    <h1> Resultados de: <%= name %></h1>
 
     <div>
         <form action="/" method="post">
+            <label for="username">Buscar otro usuario</label><br>
             <input type="text" name="username"/>
             <button type="submit"> OK </button>
         </form>
     </div>
     <div>
         <p>
-            <%= message %>
+            Tiempo de ejecucion: <%= message %>
         </p>
         <p>
-            <%= result %>
+            Resultado de cache: <%= result %>
         </p>
     </div>
     <div> 
