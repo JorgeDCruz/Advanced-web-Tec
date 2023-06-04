@@ -1,8 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const pool = require('../database');
-const redis = require("redis");
-const { createKey } = require("../lib/encryp");
 const client = require("../redis")
 
 
